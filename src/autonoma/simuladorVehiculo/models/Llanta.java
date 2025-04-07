@@ -15,53 +15,53 @@ public class Llanta {
     /**
      * tipo de llanta 
      */
-    private String tipo;
+    private String tipoLlanta;
     /**
     *limite de velocidad permitido por las llantas  
     */
-    private double limiteVelocidad;
+    private double limiteVelocidadLlanta;
 
     
     /**
      * inicializa los atributos de la case llanta 
-     * @param tipo
-     * @param limiteVelocidad 
+     * @param tipoLlanta
+     * @param limiteVelocidadLlanta
      */
-    public Llanta(String tipo, double limiteVelocidad) {
-        this.tipo = tipo;
-        this.limiteVelocidad = limiteVelocidad;
+    public Llanta(String tipoLlanta, double limiteVelocidadLlanta) {
+        this.tipoLlanta = tipoLlanta;
+        this.limiteVelocidadLlanta = limiteVelocidadLlanta;
     }
     
     /**
      * retorna el tipo de llanta 
-     * @return tipo
+     * @return tipoLlanta
      */
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoLlanta() {
+        return tipoLlanta;
     }
     /**
      * modifica el tipo de llanta 
-     * @param tipo 
+     * @param tipoLlanta
      */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(String tipoLlanta) {
+        this.tipoLlanta = tipoLlanta;
     }
     /**
      * retorna el limite de velocidad permitido 
      * @return LimiteVelocidad 
      */
-    public double getLimiteVelocidad() {
-        return limiteVelocidad;
+    public double getLimiteVelocidadLlanta() {
+        return limiteVelocidadLlanta;
     }
     
     /**
      * modifica el limite de velocidad permitido 
-     * @param limiteVelocidad 
+     * @param limiteVelocidadLlanta 
      */
 
-    public void setLimiteVelocidad(double limiteVelocidad) {
-        this.limiteVelocidad = limiteVelocidad;
+    public void setLimiteVelocidadLlanta(double limiteVelocidadLlanta) {
+        this.limiteVelocidadLlanta = limiteVelocidadLlanta;
     }
     
     
