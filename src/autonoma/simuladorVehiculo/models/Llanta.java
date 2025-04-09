@@ -63,9 +63,5 @@ public class Llanta {
     public void setLimiteVelocidadLlanta(double limiteVelocidadLlanta) {
         this.limiteVelocidadLlanta = limiteVelocidadLlanta;
     }
-    
-    
-   
-    
-    
+       
 }
