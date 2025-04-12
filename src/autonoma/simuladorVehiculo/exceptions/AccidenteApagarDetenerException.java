@@ -17,5 +17,9 @@ public class AccidenteApagarDetenerException extends RuntimeException {
     public AccidenteApagarDetenerException(){
         super("se detuvo y apago el vehiculo debido a su accidente");
     }
+
+    public AccidenteApagarDetenerException(String el_vehículo_está_accidentado_y_no_puede_e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

@@ -4,6 +4,20 @@
  */
 package autonoma.simuladorVehiculo.views;
 
+import autonoma.simuladorVehiculo.exceptions.AccidenteApagarDetenerException;
+import autonoma.simuladorVehiculo.exceptions.AcelerarMasException;
+import autonoma.simuladorVehiculo.exceptions.ApagarAltaVelocidadException;
+import autonoma.simuladorVehiculo.exceptions.ApagarException;
+import autonoma.simuladorVehiculo.exceptions.EncenderException;
+import autonoma.simuladorVehiculo.exceptions.FrenarBruscamenteException;
+import autonoma.simuladorVehiculo.exceptions.FrenarDetenidoException;
+import autonoma.simuladorVehiculo.exceptions.FrenarMasException;
+import autonoma.simuladorVehiculo.exceptions.NoUsarApagadoException;
+import autonoma.simuladorVehiculo.models.Simulador;
+import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aleja
@@ -13,8 +27,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
+    
+    Simulador simulador;
+    
+    public VentanaPrincipal(Simulador simulador) {
+        this.simulador = simulador;
         initComponents();
+        this.setLocationRelativeTo(null);
+        try{
+            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/simuladorVehiculo/images/app.png")).getImage());
+        }catch (Exception e){
+            
+        }
     }
 
     /**
@@ -26,57 +50,259 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        txtVelocidadActual = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnAcelerar = new javax.swing.JLabel();
+        btnFrenar = new javax.swing.JLabel();
+        btnApagar = new javax.swing.JLabel();
+        btnEncender = new javax.swing.JLabel();
+        imagen = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/simuladorVehiculo/images/icons8-grand-theft-auto-v-50 (1).png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 50, 90));
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 204));
+
+        txtVelocidadActual.setForeground(new java.awt.Color(255, 255, 255));
+        txtVelocidadActual.setText("Velocidad Actual");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtVelocidadActual, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(txtVelocidadActual)
+                .addGap(0, 4, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, 20));
+
+        jPanel4.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Actualizar configuracion");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(50, 50, 50))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 4, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 190, 20));
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+
+        jLabel1.setText("Ver configuracion");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                .addGap(37, 37, 37))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 4, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 190, 20));
+
+        btnAcelerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/simuladorVehiculo/images/acelerar.png"))); // NOI18N
+        btnAcelerar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAcelerarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAcelerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 40, 70));
+
+        btnFrenar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/simuladorVehiculo/images/frenar.png"))); // NOI18N
+        btnFrenar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFrenarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnFrenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 40, 70));
+
+        btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/simuladorVehiculo/images/apagar.png"))); // NOI18N
+        btnApagar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnApagarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnApagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 30, 40));
+
+        btnEncender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/simuladorVehiculo/images/encender.png"))); // NOI18N
+        btnEncender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEncenderMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnEncender, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 30, 50));
+
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/simuladorVehiculo/images/Vehiculo.png"))); // NOI18N
+        jPanel1.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnEncenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEncenderMouseClicked
+        try{
+            
+            String encender = this.simulador.encender();
+            JOptionPane.showMessageDialog(null, encender);
+        }catch(EncenderException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch(AccidenteApagarDetenerException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }finally{
+            this.txtVelocidadActual.setText(String.valueOf(this.simulador.getVehiculo().getVelocidadActual()));
         }
-        //</editor-fold>
+        
+    }//GEN-LAST:event_btnEncenderMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
-        });
-    }
+    private void btnApagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApagarMouseClicked
+        try{
+            String apagar = this.simulador.apagar();
+            JOptionPane.showMessageDialog(null, apagar);
+        }catch (ApagarException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch (ApagarAltaVelocidadException e){
+            this.simulador.getVehiculo().setVelocidadActual(0);
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }finally{
+            this.txtVelocidadActual.setText(String.valueOf(this.simulador.getVehiculo().getVelocidadActual()));
+        }
+    }//GEN-LAST:event_btnApagarMouseClicked
 
+    private void btnAcelerarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcelerarMouseClicked
+        try{
+            String Incremento = JOptionPane.showInputDialog(null, "ingrese la aceleracion deseada : ");
+            int acelerarI = Integer.parseInt(Incremento);
+            String mensaje = this.simulador.acelerar(acelerarI);
+            JOptionPane.showMessageDialog(null, mensaje);  
+        }catch (NoUsarApagadoException e){
+            this.simulador.getVehiculo().setVelocidadActual(0);
+            JOptionPane.showMessageDialog(null, e.getMessage());   
+        }catch (AcelerarMasException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }finally {
+            this.txtVelocidadActual.setText(String.valueOf(this.simulador.getVehiculo().getVelocidadActual()));
+        }
+        
+        
+    }//GEN-LAST:event_btnAcelerarMouseClicked
+
+    private void btnFrenarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFrenarMouseClicked
+       
+        try{
+            String decrementoI = JOptionPane.showInputDialog(null, "ingrse el frenado deseado: ");
+            int decremento = Integer.parseInt(decrementoI);
+            String mensaje = this.simulador.frenar(decremento);
+            JOptionPane.showMessageDialog(null, mensaje);   
+        }catch (NoUsarApagadoException e){
+            this.simulador.getVehiculo().setVelocidadActual(0);
+            JOptionPane.showMessageDialog(null, e.getMessage());   
+        }catch (FrenarDetenidoException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch(FrenarMasException e ){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch(FrenarBruscamenteException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally {
+            this.txtVelocidadActual.setText(String.valueOf(this.simulador.getVehiculo().getVelocidadActual()));
+        }
+    }//GEN-LAST:event_btnFrenarMouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        
+        try {
+            JOptionPane.showMessageDialog(null, this.simulador.getConfiguradorVehiculo().mostrarConfiActual());
+        }catch(IOException ex){
+            JOptionPane.showConfirmDialog(null, "Error al iniciar el programa, no se puede acceder al archivo configurarVehiculo.txt", "Error", JOptionPane.ERROR);
+        }
+        
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        String configuracionLlanta = JOptionPane.showInputDialog(null, "nueva configuracion llantas: ");
+        String configuracionMotor = JOptionPane.showInputDialog(null, "nueva configuracion motor: ");
+        
+        try{
+            this.simulador.getConfiguradorVehiculo().cambiarConfiguracion(configuracionLlanta, configuracionMotor);
+            JOptionPane.showMessageDialog(null, "Ha cambiado la configuracion del vehiculo", "ADVERTENCIA", HEIGHT);
+            
+        }catch(IOException e){
+            JOptionPane.showConfirmDialog(null, "Error al iniciar el programa, no se puede acceder al archivo configurarVehiculo.txt", "Error", JOptionPane.ERROR);
+        }
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnAcelerar;
+    private javax.swing.JLabel btnApagar;
+    private javax.swing.JLabel btnEncender;
+    private javax.swing.JLabel btnFrenar;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel txtVelocidadActual;
     // End of variables declaration//GEN-END:variables
 }

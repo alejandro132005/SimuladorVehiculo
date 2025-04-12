@@ -16,7 +16,7 @@ public class ApagarAltaVelocidadException extends RuntimeException{
      * se crea la excepcion para un accidente gracias a apagar el vehiculo
      */
     public ApagarAltaVelocidadException(){
-        super("se ha accidentado, ha acelerado el vehiculo a mas de 60 km/h");
+        super("se ha accidentado, ha acelerado el vehiculo a mas de 60 km/h y ha apagado el vehiculo");
     }
     
 }
